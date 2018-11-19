@@ -17,18 +17,19 @@ public class BookingTest {
 		// default constructor
 		b1 = new Booking();
 		
-		// Constructor with flights and passengers
+		// Constructor with flights and one passenger in array list
 		Flight f1 = new Flight("1", "Donegal", "Dublin", 19, 11, 2018, 12, 40, 15.99);
 		Flight f2 = new Flight("2", "Dublin", "Cork", 18, 11, 2018, 10, 25, 14.99);
 		ArrayList<Passenger> p1 = new ArrayList<>();
 		p1.add(new Passenger("Mr", "Sean", "Toman", 19 ,12 ,1992, 2, true));
-		b2 = new Booking(f1, f2, p1);
+		b2 = new Booking(f1, f2, p1); // pass created flights and arraylist to booking constructor
 	}
 
 	@Test
 	public void testBookingFlightFlightArrayListOfPassenger() {
 		assertEquals(b2.getOutbound().getFlightNumber(), "1");
 		assertEquals(b2.getInbound().getFlightNumber(), "2");
+		assertEquals(b2.getPassengers().isEmpty(), false);
 		assertEquals(b2.getPassengers().size(), 1);
 	}
 
@@ -49,12 +50,14 @@ public class BookingTest {
 		ArrayList<Passenger> passTest = new ArrayList<>();
 		passTest.add(new Passenger("Mr", "Ciaran", "Toman", 26, 7, 1989, 1, false));
 		b2.setPassengers(passTest);
+		assertEquals(b2.getPassengers().isEmpty(), false);
 		assertEquals(b2.getPassengers().size(), 1);
 	}
 
 	@Test
 	public void testSetTotalPrice() {
-		fail("Not yet implemented");
+		b2.setTotalPrice();
+		assertEquals(b2.getTotalPrice(), 30.98, 0);
 	}
 
 	@Test
@@ -64,12 +67,14 @@ public class BookingTest {
 
 	@Test
 	public void testFindPassenger() {
-		fail("Not yet implemented");
+		Passenger p = new Passenger("Mr", "Sean", "Toman", 19, 12, 1992, 2, true);
+		assertEquals(b2.findPassenger(p), true);
 	}
 
 	@Test
 	public void testCalculatePrice() {
-		fail("Not yet implemented");
+		b2.calculatePrice();
+		assertEquals(b2.getTotalPrice(), 30.98, 0);
 	}
 
 }
