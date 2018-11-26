@@ -9,7 +9,7 @@ public class Booking {
 	private ArrayList<Passenger> passengers;
 	private double totalPrice;
 	
-	private static int count = 1;
+	private static int count = 0;
 	
 	public Booking() {
 		this.outbound = new Flight();
@@ -68,7 +68,8 @@ public class Booking {
 		return "Outbound: " + outbound 
 				+ ", Inbound: " + inbound 
 				+ ", No Passengers: " + passengers.size() 
-				+ ", Total Price: " + totalPrice;
+				+ ", Total Price: " + totalPrice
+				+ ", No Bookings: " + count;
 	}
 	
 	@Override
